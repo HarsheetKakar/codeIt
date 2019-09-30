@@ -1,1 +1,8 @@
+#configurations of firebase
 config.json
+
+#python files
+client.py
+
+#text files
+result.txt
