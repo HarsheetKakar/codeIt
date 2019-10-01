@@ -22,6 +22,12 @@ for user in users.each():
         p.write(code)
         p.close()
         os.system("python ./python/py.py > result.txt")
-        p = open("result.txt","r")
-        ans = p.read()
-        db.child("users").child(key).child("result").set(ans)
+    elif(user["language"] == "c++"):
+        code = user["code"]
+        p = open("./cpp/cpp.cpp",'w')
+        p.write(code)
+        p.close()
+        os.system("cd ./cpp&g++ -o cpp cpp.cpp&cpp.exe > ../result.txt")
+    p = open("result.txt","r")
+    ans = p.read()
+    db.child("users").child(key).child("result").set(ans)

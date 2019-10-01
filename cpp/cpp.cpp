@@ -4,8 +4,6 @@ using namespace std;
 
 int main()
 {
-    // prints hello world
-    cot<<"Hello World";
-
+    cout<<"Hello World";
     return 0;
 }
