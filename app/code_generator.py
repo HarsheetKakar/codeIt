@@ -8,11 +8,11 @@ configuration_file.close()
 firebase = pyrebase.initialize_app(config)
 
 class Entries:
-    def __init__(self,username,language,code):
+    def __init__(self,sender,language,codeBody):
         self.user = {
-        "username" : username,
+        "sender" : sender,
         "language" : language,
-        "code" : code
+        "codeBody" : codeBody
         }
 
     def getDict(self):
@@ -44,5 +44,5 @@ int main()
         pass
     user1 = auth.sign_in_with_email_and_password("testUser1@gmail.com","123456")
     user2 = auth.sign_in_with_email_and_password("testUser2@gmail.com","123456")
-    db.child("users").push(u1.getJSON(),user1["idToken"])
-    db.child("users").push(u2.getJSON(),user2["idToken"])
+    db.child("Code").push(u1.getDict(),user1["idToken"])
+    db.child("Code").push(u2.getDict(),user2["idToken"])
