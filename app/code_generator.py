@@ -1,5 +1,6 @@
 import json
 import pyrebase
+import stat
 
 configuration_file = open("config.json",'r')
 config = json.loads((configuration_file.read()))

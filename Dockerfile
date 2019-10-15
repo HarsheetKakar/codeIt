@@ -1,14 +1,15 @@
-FROM frolvlad/alpine-gcc
 FROM ubuntu
 FROM python
 
 RUN apt-get update
-RUN apt install build-essential
+RUN apt-get install build-essential
 
 RUN pip install -U pip
 RUN pip install --upgrade pip setuptools
 RUN pip install pyrebase
 
-COPY ./app app
+COPY ./app /usr/local/app
+WORKDIR /usr/local/app
 
-WORKDIR "./app"
+CMD ["python","script.py"]
+ENTRYPOINT bash
