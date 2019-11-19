@@ -34,16 +34,31 @@ int main()
     return 0;
 }
 """
-    u1 = Entries("harsheet","python",python)
-    u2 = Entries("anshul","c++",cpp)
+    java = r"""public class java8 {
+
+   public static void main(String[] args) {
+
+      int num1 = 5, num2 = 15, sum;
+      sum = num1 + num2;
+
+      System.out.println("Sum of these numbers: "+sum);
+   }
+}
+"""
+    u1 = Entries("harsheet","Python",python)
+    u2 = Entries("anshul","C++",cpp)
+    u3 = Entries("rahul","Java8",java)
     db = firebase.database()
     auth = firebase.auth()
     try:
-        auth.create_user_with_email_and_password("testUser1@gmail.com","123456")
-        auth.create_user_with_email_and_password("testUser2@gmail.com","123456")
+        #auth.create_user_with_email_and_password("testUser1@gmail.com","123456")
+        #auth.create_user_with_email_and_password("testUser2@gmail.com","123456")
+        auth.create_user_with_email_and_password("testUser3@gmail.com","123456")
     except Exception:
         pass
     user1 = auth.sign_in_with_email_and_password("testUser1@gmail.com","123456")
     user2 = auth.sign_in_with_email_and_password("testUser2@gmail.com","123456")
+    user3 = auth.sign_in_with_email_and_password("testUser3@gmail.com","123456")
     db.child("Code").push(u1.getDict(),user1["idToken"])
     db.child("Code").push(u2.getDict(),user2["idToken"])
+    db.child("Code").push(u3.getDict(),user3["idToken"])
